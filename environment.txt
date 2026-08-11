@@ -1,0 +1,5 @@
+Python 3.14.4
+torch 2.13.0+cu130
+hydra 1.4.0.dev8
+numpy 2.5.2
+pandas 3.0.5
