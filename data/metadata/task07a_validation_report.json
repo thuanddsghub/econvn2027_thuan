@@ -1,0 +1,23 @@
+{
+  "schema_version": "task07a.v1",
+  "validation": {
+    "status": "PASS",
+    "input_sha256": "7840da440ae9c97fe3c3947ec490877cff87ce1cdd184cd9d412752558e714d1",
+    "sample_index_sha256": "7d2db7584efa2706ff96d9b281b2d251d766ba67be3acfe04b76379a408cf458",
+    "input_sha256_unchanged": true,
+    "sample_index_unchanged": true,
+    "scaler_type": "StandardScaler-equivalent z-score",
+    "fit_source": "finite observations from rows timestamp < 2024-01-01T00:00:00Z only",
+    "validation_test_contributed_to_fit": false,
+    "rv_168h_used": false,
+    "targets_scaled": false,
+    "nan_counts_preserved": true,
+    "no_inf_introduced": true,
+    "inverse_transform_max_abs_error": {
+      "train": 0.0,
+      "validation": 1.734723475976807e-18,
+      "test": 0.0
+    },
+    "constant_variance_policy": "variance <= 1e-12 uses scale=1.0"
+  }
+}

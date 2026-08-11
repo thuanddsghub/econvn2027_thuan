@@ -30,6 +30,41 @@ training:
   epochs: 50
   lr: 0.0003
   weight_decay: 0.0001
+  # Forecast targets remain in original log-return scale; feature scaling is input-only.
+  targets_scaled: false
+
+task08a:
+  seed: 42
+  model: lstm
+  hidden_size: 16
+  num_layers: 1
+  batch_size: 1024
+  epochs: 4
+  patience: 2
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  target_scale: original_log_return
+  selection: validation_only
+
+task08b:
+  seed: 42
+  model: transformer_encoder
+  d_model: 32
+  nhead: 4
+  num_layers: 2
+  feedforward_dim: 64
+  dropout: 0.1
+  front_end: learnable_conv1d
+  front_end_kernel_size: 8
+  front_end_stride: 8
+  front_end_padding: 4
+  uses_all_context_observations: true
+  batch_size: 1024
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  max_epochs: 4
+  target_scale: original_log_return
+  selection: validation_only
 
 sampling:
   n_samples: 500
