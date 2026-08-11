@@ -38,5 +38,8 @@ experiment:
   primary_metric: crps
   regimes: [low, medium, high]
   primary_volatility_feature: rv_24h
+  # False is mandatory for the main/default experiment. Set true only for
+  # explicitly labeled post-main sensitivity/diagnostic analyses.
+  volatility_sensitivity_mode: false
   diagnostic_volatility_features: [rv_168h]
   diagnostic_feature_policy: "rv_168h may be used only for descriptive diagnostics, post-main sensitivity/robustness checks, or supplementary figures/tables; never for primary conditioning, regime thresholds, headline tables, model selection, or tuning."

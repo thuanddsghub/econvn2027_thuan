@@ -12,6 +12,7 @@ def test_main_config_selects_rv24_and_restricts_rv168() -> None:
     assert config["data"]["regime_threshold_fit"] == "train_only"
     assert config["model"]["volatility_conditioning_feature"] == "rv_24h"
     assert config["experiment"]["primary_volatility_feature"] == "rv_24h"
+    assert config["experiment"]["volatility_sensitivity_mode"] is False
     assert config["data"]["diagnostic_volatility_features"] == ["rv_168h"]
     assert config["experiment"]["diagnostic_volatility_features"] == ["rv_168h"]
 

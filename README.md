@@ -35,4 +35,7 @@ train/validation/test regime thresholds, headline result tables, model selection
 hyperparameter tuning. It may be used after the main experiment for descriptive
 diagnostics, robustness checks, or optional supplementary figures/tables.
 
+The feature-selection guard rejects `rv_168h` in the main/default mode. A caller must
+explicitly enable `sensitivity_mode` for a diagnostic or sensitivity analysis.
+
 See `AGENTS.md` for Codex instructions and `configs/base.yaml` for defaults.
