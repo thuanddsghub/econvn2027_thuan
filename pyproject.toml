@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "va-diff-eth"
 version = "0.1.0"
 description = "Volatility-Aware Diffusion Models for ETH/USD return forecasting"
-requires-python = ">=3.11,<3.13"
+requires-python = ">=3.11,<3.15"
 dependencies = [
   "torch>=2.4",
   "numpy>=1.26",

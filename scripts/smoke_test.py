@@ -1,4 +1,6 @@
+import hydra
 import torch
+
 from va_diff.models.va_diff import VADiffDenoiser
 from va_diff.utils.repro import seed_everything
 
@@ -13,3 +15,4 @@ out = model(
 )
 assert out.shape == (b, 24)
 print("smoke test: OK", tuple(out.shape))
+print("hydra import: OK", hydra.__version__)
