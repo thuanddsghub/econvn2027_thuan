@@ -66,6 +66,25 @@ task08b:
   target_scale: original_log_return
   selection: validation_only
 
+task09:
+  seed: 42
+  model: standard_conditional_diffusion
+  context_encoder: gru
+  context_hidden_size: 32
+  context_layers: 1
+  diffusion_steps: 100
+  beta_schedule: linear
+  beta_start: 0.0001
+  beta_end: 0.02
+  batch_size: 512
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  max_epochs: 10
+  final_sample_count: 2
+  targets_scaled: false
+  explicit_volatility_conditioning: false
+  selection: validation_only
+
 sampling:
   n_samples: 500
 
