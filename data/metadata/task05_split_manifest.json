@@ -1,0 +1,77 @@
+{
+  "task": "05",
+  "input_file": "data/processed/eth_usd_hourly_features.parquet",
+  "input_sha256": "7840da440ae9c97fe3c3947ec490877cff87ce1cdd184cd9d412752558e714d1",
+  "split_boundaries_utc": {
+    "train": "timestamp < 2024-01-01T00:00:00Z",
+    "validation": "2024-01-01T00:00:00Z <= timestamp < 2025-01-01T00:00:00Z",
+    "test": "timestamp >= 2025-01-01T00:00:00Z"
+  },
+  "regime_feature": "rv_24h",
+  "regime_thresholds": {
+    "q33": 0.027575830399575955,
+    "q67": 0.04549905819580233
+  },
+  "threshold_policy": "q33 and q67 computed once from valid train rv_24h values and frozen for all splits",
+  "regime_definitions": {
+    "Low": "rv_24h < q33",
+    "Medium": "q33 <= rv_24h < q67",
+    "High": "rv_24h >= q67",
+    "NaN": "rv_24h is NaN; no regime label assigned"
+  },
+  "split_index_file": "data/processed/task05_split_index.parquet",
+  "split_index_sha256": "4f22cb23dbe5392b4ee0475ee2da460ed07123fc0ae8236410d193f883354cec",
+  "splits": {
+    "train": {
+      "rows": 61316,
+      "date_range_utc": {
+        "start": "2017-01-01T00:00:00Z",
+        "end": "2023-12-31T23:00:00Z"
+      },
+      "rv_24h_valid": 60908,
+      "rv_24h_nan": 408,
+      "regime_counts": {
+        "Low": 20303,
+        "Medium": 20302,
+        "High": 20303
+      },
+      "unlabeled_rv_24h_nan": 408
+    },
+    "validation": {
+      "rows": 8784,
+      "date_range_utc": {
+        "start": "2024-01-01T00:00:00Z",
+        "end": "2024-12-31T23:00:00Z"
+      },
+      "rv_24h_valid": 8784,
+      "rv_24h_nan": 0,
+      "regime_counts": {
+        "Low": 4614,
+        "Medium": 3119,
+        "High": 1051
+      },
+      "unlabeled_rv_24h_nan": 0
+    },
+    "test": {
+      "rows": 14079,
+      "date_range_utc": {
+        "start": "2025-01-01T00:00:00Z",
+        "end": "2026-08-11T00:00:00Z"
+      },
+      "rv_24h_valid": 14031,
+      "rv_24h_nan": 48,
+      "regime_counts": {
+        "Low": 6523,
+        "Medium": 5435,
+        "High": 2073
+      },
+      "unlabeled_rv_24h_nan": 48
+    }
+  },
+  "excluded": [
+    "rv_168h",
+    "feature_scaling",
+    "model_windows",
+    "random_split"
+  ]
+}

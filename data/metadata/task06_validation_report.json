@@ -1,0 +1,109 @@
+{
+  "schema_version": "task06.v1",
+  "manifest": {
+    "task": "06",
+    "input_file": "data/processed/eth_usd_hourly_features.parquet",
+    "input_sha256": "7840da440ae9c97fe3c3947ec490877cff87ce1cdd184cd9d412752558e714d1",
+    "split_index_file": "data/processed/task05_split_index.parquet",
+    "frozen_train_regime_thresholds": {
+      "q33": 0.027575830399575955,
+      "q67": 0.04549905819580233
+    },
+    "context_length": 168,
+    "horizons": [
+      1,
+      6,
+      24
+    ],
+    "model_input_features": [
+      "log_return",
+      "log_volume",
+      "high_low_range",
+      "rv_24h"
+    ],
+    "target": "log_return",
+    "sample_definition": "X=[t-167,...,t], Y=[t+1,...,t+H]",
+    "sample_index_file": "data/processed/task06_sample_index.parquet",
+    "sample_index_sha256": "7d2db7584efa2706ff96d9b281b2d251d766ba67be3acfe04b76379a408cf458",
+    "sample_counts": {
+      "train/horizon_1": 58125,
+      "train/horizon_6": 58045,
+      "train/horizon_24": 57757,
+      "validation/horizon_1": 8616,
+      "validation/horizon_6": 8611,
+      "validation/horizon_24": 8593,
+      "test/horizon_1": 13527,
+      "test/horizon_6": 13512,
+      "test/horizon_24": 13458
+    },
+    "rejected_sample_counts_by_reason": {
+      "train/horizon_1": {
+        "context_gap": 2624,
+        "insufficient_context": 167,
+        "nan_context": 384,
+        "split_boundary": 1,
+        "target_gap": 15
+      },
+      "train/horizon_6": {
+        "context_gap": 2624,
+        "insufficient_context": 167,
+        "nan_context": 384,
+        "split_boundary": 6,
+        "target_gap": 90
+      },
+      "train/horizon_24": {
+        "context_gap": 2624,
+        "insufficient_context": 167,
+        "nan_context": 384,
+        "split_boundary": 24,
+        "target_gap": 360
+      },
+      "validation/horizon_1": {
+        "split_boundary": 168
+      },
+      "validation/horizon_6": {
+        "split_boundary": 173
+      },
+      "validation/horizon_24": {
+        "split_boundary": 191
+      },
+      "test/horizon_1": {
+        "context_gap": 334,
+        "insufficient_target": 1,
+        "nan_context": 48,
+        "split_boundary": 167,
+        "target_gap": 2
+      },
+      "test/horizon_6": {
+        "context_gap": 334,
+        "insufficient_target": 6,
+        "nan_context": 48,
+        "split_boundary": 167,
+        "target_gap": 12
+      },
+      "test/horizon_24": {
+        "context_gap": 334,
+        "insufficient_target": 24,
+        "nan_context": 48,
+        "split_boundary": 167,
+        "target_gap": 48
+      }
+    },
+    "no_scaling": true,
+    "excluded": [
+      "model_training",
+      "model_windows",
+      "scalers",
+      "rv_168h"
+    ]
+  },
+  "validation": {
+    "status": "FAIL",
+    "sample_index_timestamps_unique": false,
+    "no_future_context": true,
+    "exact_hourly_continuity": true,
+    "no_nan_inputs_or_targets": true,
+    "split_boundaries_respected": true,
+    "no_rv_168h_used": true
+  }
+}
