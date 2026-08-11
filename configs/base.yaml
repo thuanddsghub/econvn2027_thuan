@@ -1,0 +1,31 @@
+seed: 42
+
+data:
+  symbol: ETH-USD
+  frequency: 1h
+  context_length: 168
+  horizons: [1, 6, 24]
+  volatility_window: 24
+  train_end: "2023-12-31"
+  val_end: "2024-12-31"
+
+model:
+  name: va_diff
+  hidden_dim: 128
+  diffusion_steps: 100
+  beta_start: 0.0001
+  beta_end: 0.02
+  volatility_conditioning: true
+
+training:
+  batch_size: 128
+  epochs: 50
+  lr: 0.0003
+  weight_decay: 0.0001
+
+sampling:
+  n_samples: 500
+
+experiment:
+  primary_metric: crps
+  regimes: [low, medium, high]
