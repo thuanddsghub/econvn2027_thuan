@@ -1,0 +1,31 @@
+{
+  "task": "03",
+  "input_file": "data/raw/eth_usd_hourly_ohlcv.csv",
+  "raw_sha256": "5f0e3df7cfcfc41df87a4a29efb82481a33742f71bb6d93fde469fabf7ccc1e7",
+  "output_file": "data/processed/eth_usd_hourly.parquet",
+  "output_sha256": "f370a85d66c3db275027171aa817a992ea357c448cf4423831a37527cc3885cf",
+  "row_count": 84179,
+  "columns": [
+    "timestamp",
+    "low",
+    "high",
+    "open",
+    "close",
+    "volume",
+    "log_return",
+    "log_volume",
+    "high_low_range"
+  ],
+  "transformations": {
+    "timestamp": "parsed as UTC and sorted chronologically",
+    "log_return": "log(close_t) - log(close_{t-1}) only when timestamps differ by exactly one hour",
+    "log_volume": "numpy.log1p(volume)",
+    "high_low_range": "(high - low) / close"
+  },
+  "excluded": [
+    "realized_volatility",
+    "volatility_regime",
+    "data_split",
+    "feature_scaling"
+  ]
+}

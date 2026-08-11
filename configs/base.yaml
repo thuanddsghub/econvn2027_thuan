@@ -5,7 +5,13 @@ data:
   frequency: 1h
   context_length: 168
   horizons: [1, 6, 24]
+  # Primary volatility feature for all main-manuscript experiments.
+  primary_volatility_feature: rv_24h
+  # Keep the default window explicit; rv_168h is diagnostic only.
   volatility_window: 24
+  diagnostic_volatility_features: [rv_168h]
+  regime_threshold_feature: rv_24h
+  regime_threshold_fit: train_only
   train_end: "2023-12-31"
   val_end: "2024-12-31"
 
@@ -16,6 +22,8 @@ model:
   beta_start: 0.0001
   beta_end: 0.02
   volatility_conditioning: true
+  # The default VA-Diff conditioning input is rv_24h, never rv_168h.
+  volatility_conditioning_feature: rv_24h
 
 training:
   batch_size: 128
@@ -29,3 +37,6 @@ sampling:
 experiment:
   primary_metric: crps
   regimes: [low, medium, high]
+  primary_volatility_feature: rv_24h
+  diagnostic_volatility_features: [rv_168h]
+  diagnostic_feature_policy: "rv_168h may be used only for descriptive diagnostics, post-main sensitivity/robustness checks, or supplementary figures/tables; never for primary conditioning, regime thresholds, headline tables, model selection, or tuning."

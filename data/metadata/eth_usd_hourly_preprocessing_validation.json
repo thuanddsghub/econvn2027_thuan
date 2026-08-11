@@ -1,0 +1,110 @@
+{
+  "schema_version": "task03.v1",
+  "metadata": {
+    "task": "03",
+    "input_file": "data/raw/eth_usd_hourly_ohlcv.csv",
+    "raw_sha256": "5f0e3df7cfcfc41df87a4a29efb82481a33742f71bb6d93fde469fabf7ccc1e7",
+    "output_file": "data/processed/eth_usd_hourly.parquet",
+    "output_sha256": "f370a85d66c3db275027171aa817a992ea357c448cf4423831a37527cc3885cf",
+    "row_count": 84179,
+    "columns": [
+      "timestamp",
+      "low",
+      "high",
+      "open",
+      "close",
+      "volume",
+      "log_return",
+      "log_volume",
+      "high_low_range"
+    ],
+    "transformations": {
+      "timestamp": "parsed as UTC and sorted chronologically",
+      "log_return": "log(close_t) - log(close_{t-1}) only when timestamps differ by exactly one hour",
+      "log_volume": "numpy.log1p(volume)",
+      "high_low_range": "(high - low) / close"
+    },
+    "excluded": [
+      "realized_volatility",
+      "volatility_regime",
+      "data_split",
+      "feature_scaling"
+    ]
+  },
+  "validation": {
+    "status": "PASS",
+    "raw_sha256": "5f0e3df7cfcfc41df87a4a29efb82481a33742f71bb6d93fde469fabf7ccc1e7",
+    "raw_sha256_unchanged": true,
+    "processed_row_count": 84179,
+    "timestamps_utc": true,
+    "timestamps_strictly_increasing": true,
+    "duplicate_timestamps": 0,
+    "missing_hourly_candles": 38,
+    "missing_candle_timestamps_utc": [
+      "2017-01-24T08:00:00Z",
+      "2017-02-28T20:00:00Z",
+      "2017-02-28T21:00:00Z",
+      "2017-02-28T22:00:00Z",
+      "2017-02-28T23:00:00Z",
+      "2017-03-01T00:00:00Z",
+      "2017-04-15T20:00:00Z",
+      "2017-04-15T21:00:00Z",
+      "2017-04-15T22:00:00Z",
+      "2017-06-21T21:00:00Z",
+      "2017-06-21T22:00:00Z",
+      "2017-09-25T09:00:00Z",
+      "2017-12-01T07:00:00Z",
+      "2017-12-12T06:00:00Z",
+      "2018-02-01T05:00:00Z",
+      "2018-02-01T06:00:00Z",
+      "2018-02-01T07:00:00Z",
+      "2018-05-10T04:00:00Z",
+      "2018-05-30T03:00:00Z",
+      "2018-06-04T03:00:00Z",
+      "2019-06-20T14:00:00Z",
+      "2019-06-20T15:00:00Z",
+      "2020-01-30T17:00:00Z",
+      "2020-09-04T23:00:00Z",
+      "2020-10-20T20:00:00Z",
+      "2023-03-04T18:00:00Z",
+      "2023-03-04T19:00:00Z",
+      "2023-03-04T20:00:00Z",
+      "2025-10-25T16:00:00Z",
+      "2025-10-25T17:00:00Z",
+      "2025-10-25T18:00:00Z",
+      "2025-10-25T19:00:00Z",
+      "2025-10-25T20:00:00Z",
+      "2026-05-08T02:00:00Z",
+      "2026-05-08T03:00:00Z",
+      "2026-05-08T04:00:00Z",
+      "2026-05-08T05:00:00Z",
+      "2026-05-08T06:00:00Z"
+    ],
+    "returns_invalidated_because_of_gaps": 18,
+    "returns_only_on_consecutive_hours": true,
+    "unexpected_inf_counts": {
+      "log_return": 0,
+      "log_volume": 0,
+      "high_low_range": 0
+    },
+    "nan_counts_by_column": {
+      "timestamp": 0,
+      "low": 0,
+      "high": 0,
+      "open": 0,
+      "close": 0,
+      "volume": 0,
+      "log_return": 19,
+      "log_volume": 0,
+      "high_low_range": 0
+    },
+    "nan_causes": {
+      "timestamp": "none",
+      "source_ohlcv": "none expected after raw validation",
+      "log_return": "first chronological row plus rows immediately after missing hourly intervals",
+      "log_volume": "none expected after raw validation",
+      "high_low_range": "none expected after raw validation"
+    }
+  },
+  "input_sha256": "5f0e3df7cfcfc41df87a4a29efb82481a33742f71bb6d93fde469fabf7ccc1e7"
+}

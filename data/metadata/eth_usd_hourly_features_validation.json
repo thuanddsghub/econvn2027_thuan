@@ -1,0 +1,66 @@
+{
+  "schema_version": "task04.v1",
+  "metadata": {
+    "task": "04",
+    "input_file": "data/processed/eth_usd_hourly.parquet",
+    "input_sha256": "f370a85d66c3db275027171aa817a992ea357c448cf4423831a37527cc3885cf",
+    "output_file": "data/processed/eth_usd_hourly_features.parquet",
+    "output_sha256": "7840da440ae9c97fe3c3947ec490877cff87ce1cdd184cd9d412752558e714d1",
+    "row_count": 84179,
+    "feature_columns": [
+      "rv_24h",
+      "rv_168h"
+    ],
+    "primary_volatility_feature": "rv_24h",
+    "diagnostic_volatility_features": [
+      "rv_168h"
+    ],
+    "diagnostic_feature_policy": "rv_168h is diagnostic-only and excluded from primary conditioning, regime thresholds, headline tables, model selection, and hyperparameter tuning.",
+    "formula": "rv_window(t) = sqrt(sum_{i=0}^{window-1} log_return[t-i]^2)",
+    "convention": "unnormalized trailing realized volatility in return units",
+    "windows_hours": {
+      "rv_24h": 24,
+      "rv_168h": 168
+    },
+    "window_policy": "strict trailing window; current and prior rows only; any NaN log_return in the window produces NaN; no filling across gaps",
+    "excluded": [
+      "volatility_regimes",
+      "regime_quantiles",
+      "data_splits",
+      "scaling"
+    ]
+  },
+  "validation": {
+    "status": "PASS",
+    "input_sha256": "f370a85d66c3db275027171aa817a992ea357c448cf4423831a37527cc3885cf",
+    "input_sha256_unchanged": true,
+    "timestamps_utc": true,
+    "timestamps_strictly_increasing": true,
+    "duplicate_timestamps": 0,
+    "formula": "sqrt(sum_{i=0}^{window-1} log_return[t-i]^2)",
+    "window_policy": "strict trailing window; current and prior rows only; any NaN log_return in the window produces NaN; no filling across gaps",
+    "uses_current_and_past_returns_only": true,
+    "future_timestamp_contribution": false,
+    "feature_inf_counts": {
+      "rv_24h": 0,
+      "rv_168h": 0
+    },
+    "nan_counts_by_column": {
+      "timestamp": 0,
+      "low": 0,
+      "high": 0,
+      "open": 0,
+      "close": 0,
+      "volume": 0,
+      "log_return": 19,
+      "log_volume": 0,
+      "high_low_range": 0,
+      "rv_24h": 456,
+      "rv_168h": 3143
+    },
+    "nan_causes": {
+      "rv_24h": "strict 24-observation window: initial warm-up and any window containing a NaN log_return",
+      "rv_168h": "strict 168-observation window: initial warm-up and any window containing a NaN log_return"
+    }
+  }
+}

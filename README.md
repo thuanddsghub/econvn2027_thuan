@@ -23,4 +23,16 @@ pytest -q
 - Primary metric: CRPS
 - Regimes: low / medium / high volatility
 
+## Volatility feature policy
+
+`rv_24h` is the only primary volatility feature for main-manuscript experiments. It is
+the default model-conditioning feature and the feature from which regime thresholds
+are fit using training data only.
+
+`rv_168h` remains available in the feature dataset as a diagnostic/sensitivity feature
+only. It must not be used for primary model conditioning, main regime definitions,
+train/validation/test regime thresholds, headline result tables, model selection, or
+hyperparameter tuning. It may be used after the main experiment for descriptive
+diagnostics, robustness checks, or optional supplementary figures/tables.
+
 See `AGENTS.md` for Codex instructions and `configs/base.yaml` for defaults.
