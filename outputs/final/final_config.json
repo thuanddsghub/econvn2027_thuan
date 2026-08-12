@@ -1,0 +1,57 @@
+{
+  "task": "17",
+  "status": "FINAL_MANUSCRIPT_SNAPSHOT",
+  "task15_target_parameterization": "z=(r-mean_train)/std_train",
+  "context_length": 168,
+  "horizons": [
+    1,
+    6,
+    24
+  ],
+  "features": [
+    "log_return",
+    "log_volume",
+    "high_low_range",
+    "rv_24h"
+  ],
+  "models": {
+    "standard_diffusion": {
+      "context_encoder": "GRU",
+      "hidden_size": 32,
+      "layers": 1,
+      "explicit_volatility_conditioning": false
+    },
+    "va_diff": {
+      "context_encoder": "GRU",
+      "hidden_size": 32,
+      "layers": 1,
+      "volatility_branch": "separate rv_24h-at-origin MLP",
+      "volatility_conditioning": true
+    }
+  },
+  "diffusion": {
+    "steps": 100,
+    "beta_schedule": "linear",
+    "beta_start": 0.0001,
+    "beta_end": 0.02,
+    "reverse_variance": "DDPM posterior beta_tilde; zero stochastic noise at t=0"
+  },
+  "training": {
+    "seeds": [
+      42,
+      123,
+      2024,
+      3407,
+      7777
+    ],
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "max_epochs": 10,
+    "selection": "validation_only",
+    "sample_count": 100
+  },
+  "regimes": "frozen Task 05 train-only rv_24h q33/q67",
+  "rv_168h_used": false,
+  "test_tuning": false
+}

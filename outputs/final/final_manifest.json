@@ -1,0 +1,86 @@
+{
+  "task": "17",
+  "status": "PASS",
+  "snapshot_policy": "immutable; freeze script refuses to overwrite an existing non-empty snapshot",
+  "authoritative_results": [
+    "Task 15 target-standardized diffusion",
+    "Task 16 five-seed robustness"
+  ],
+  "hashes": {
+    "dataset": {
+      "path": "data/processed/eth_usd_hourly_features.parquet",
+      "sha256": "7840da440ae9c97fe3c3947ec490877cff87ce1cdd184cd9d412752558e714d1"
+    },
+    "task06_sample_index": {
+      "path": "data/processed/task06_sample_index.parquet",
+      "sha256": "2a8c1fed442fc684593d4c93edb3fd997b2a0fdb38015752018ddc7c32c7170d"
+    },
+    "input_scaler": {
+      "path": "data/metadata/task07a_scaler.json",
+      "sha256": "774f9fa153121b30cc9db7f78be7296be959e377e8be7221bb50f92d2e724502"
+    },
+    "target_scaler": {
+      "path": "outputs/final/target_scaler.json",
+      "sha256": "75fab1a43af03ea1474ac972e56c5f0d2bbbc52f8d0ee714acdda1d886bf2c74"
+    },
+    "final_config": {
+      "path": "outputs/final/final_config.json",
+      "sha256": "901edddfa6457663fed1b882751f14bcc870fb6cec5aad530acfda5762cc7bce"
+    },
+    "task16_metrics_source": {
+      "path": "outputs/metrics/task16_multiseed_metrics.csv",
+      "sha256": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f"
+    },
+    "task16_regime_metrics_source": {
+      "path": "outputs/metrics/task16_regime_metrics.csv",
+      "sha256": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979"
+    }
+  },
+  "seeds": [
+    42,
+    123,
+    2024,
+    3407,
+    7777
+  ],
+  "final_config": "outputs/final/final_config.json",
+  "frozen_regime_thresholds": {
+    "q33": 0.027575830399575955,
+    "q67": 0.04549905819580233
+  },
+  "regime_policy": "q33 and q67 computed once from valid train rv_24h values and frozen for all splits",
+  "task06_sample_counts": {
+    "train/horizon_1": 58125,
+    "train/horizon_6": 58045,
+    "train/horizon_24": 57757,
+    "validation/horizon_1": 8784,
+    "validation/horizon_6": 8779,
+    "validation/horizon_24": 8761,
+    "test/horizon_1": 13695,
+    "test/horizon_6": 13680,
+    "test/horizon_24": 13626
+  },
+  "task06_sample_index_rows": 241252,
+  "final_metric_row_counts": {
+    "overall": 30,
+    "regime": 90
+  },
+  "final_metric_sources_reproduced_exactly": {
+    "overall_sha256_matches_source": true,
+    "regime_sha256_matches_source": true
+  },
+  "validation": {
+    "all_hashes_resolve": true,
+    "train_only_input_scaler": true,
+    "train_only_target_scaler": true,
+    "corrected_ddpm_posterior_variance": true,
+    "rv_168h_used": false,
+    "no_test_tuning": true
+  },
+  "non_final_exploratory_outputs": {
+    "outputs/metrics/task09_standard_diffusion_metrics.csv": "exploratory/pre-correction; not final",
+    "outputs/metrics/task10_va_diffusion_metrics.csv": "exploratory/pre-correction; not final",
+    "outputs/metrics/task09_sampling_metrics.csv": "exploratory/pre-correction; not final",
+    "outputs/metrics/task14_corrected_metrics.csv": "intermediate correction comparison; not the frozen multi-seed final result"
+  }
+}

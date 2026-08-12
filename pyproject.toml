@@ -18,8 +18,11 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8.3", "ruff>=0.6"]
 
+[tool.setuptools]
+packages = []
+
 [tool.pytest.ini_options]
-pythonpath = ["src", "."]
+pythonpath = ["."]
 testpaths = ["tests"]
 
 [tool.ruff]

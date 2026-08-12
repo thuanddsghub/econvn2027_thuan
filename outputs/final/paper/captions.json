@@ -1,0 +1,5 @@
+{
+  "figure1": "Nominal 90% coverage and empirical coverage across horizons; points are five-seed means.",
+  "figure2": "Mean test CRPS by frozen train-only volatility regime across five paired seeds.",
+  "figure3": "Per-seed VA-Diff minus Standard Diffusion CRPS; negative values favor VA-Diff."
+}

@@ -1,0 +1,8 @@
+{
+  "scaler_type": "standard_zscore",
+  "fit_rows": "finite train log_return observations only",
+  "mean": 9.035341009859136e-05,
+  "std_ddof_1": 0.010806338977574673,
+  "targets_scaled_for_training": true,
+  "saved_predictions_units": "original log_return"
+}

@@ -1,0 +1,422 @@
+{
+  "task": "18",
+  "status": "PASS",
+  "inputs": {
+    "final_manifest": {
+      "path": "outputs/final/final_manifest.json",
+      "sha256": "6d08c20fedf0053e13e46da20ce309175167c16cc93ae19ed3b7097253e0ecc1"
+    },
+    "final_metrics": {
+      "path": "outputs/final/final_metrics.csv",
+      "sha256": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f"
+    },
+    "final_regime_metrics": {
+      "path": "outputs/final/final_regime_metrics.csv",
+      "sha256": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979"
+    }
+  },
+  "paired_unit": "seed; forecast timestamps are not treated as independent observations",
+  "seeds": [
+    42,
+    123,
+    2024,
+    3407,
+    7777
+  ],
+  "horizons": [
+    1,
+    6,
+    24
+  ],
+  "metrics": [
+    "crps",
+    "median_mae",
+    "median_rmse",
+    "picp",
+    "interval_width"
+  ],
+  "crps_tests_overall": [
+    {
+      "regime": "Overall",
+      "horizon": 1,
+      "standard_crps_by_seed": [
+        0.0035444028267547,
+        0.0035486061900073,
+        0.0035341257128461,
+        0.0035383246815689,
+        0.0035353383014615
+      ],
+      "va_diff_crps_by_seed": [
+        0.0035326516034371,
+        0.0035393210766939,
+        0.0035387273838787,
+        0.0035361690116361,
+        0.0035382913269461
+      ],
+      "delta_by_seed_va_minus_standard": [
+        -1.1751223317600038e-05,
+        -9.285113313399831e-06,
+        4.601671032600056e-06,
+        -2.1556699327999855e-06,
+        2.953025484599657e-06
+      ],
+      "paired_t_pvalue": 0.3890631764730166,
+      "wilcoxon_pvalue": 0.625,
+      "wilcoxon_method": "exact",
+      "cohens_dz": -0.43169024461611505,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "Overall",
+      "horizon": 6,
+      "standard_crps_by_seed": [
+        0.0035781156070609,
+        0.0036124770963181,
+        0.0035711853137188,
+        0.0035824764290333,
+        0.0035859153771645
+      ],
+      "va_diff_crps_by_seed": [
+        0.0035774410163802,
+        0.0035809949062544,
+        0.0035703823502506,
+        0.0035919806825833,
+        0.0035980419369472
+      ],
+      "delta_by_seed_va_minus_standard": [
+        -6.745906807000858e-07,
+        -3.14821900636998e-05,
+        -8.02963468199587e-07,
+        9.504253550000029e-06,
+        1.2126559782700119e-05
+      ],
+      "paired_t_pvalue": 0.7847820720427962,
+      "wilcoxon_pvalue": 1.0,
+      "wilcoxon_method": "exact",
+      "cohens_dz": -0.13060081022008702,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "Overall",
+      "horizon": 24,
+      "standard_crps_by_seed": [
+        0.0036155536329817,
+        0.0036191488860882,
+        0.0036160858440424,
+        0.003621676065087,
+        0.0036197070434505
+      ],
+      "va_diff_crps_by_seed": [
+        0.0036139819662446,
+        0.0036774446107524,
+        0.003615323849102,
+        0.003629957271977,
+        0.0036213676999091
+      ],
+      "delta_by_seed_va_minus_standard": [
+        -1.5716667371001164e-06,
+        5.8295724664199616e-05,
+        -7.619949404001972e-07,
+        8.281206890000097e-06,
+        1.6606564586002688e-06
+      ],
+      "paired_t_pvalue": 0.31234749127459344,
+      "wilcoxon_pvalue": 0.3125,
+      "wilcoxon_method": "exact",
+      "cohens_dz": 0.5165845006023294,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    }
+  ],
+  "crps_tests_by_regime": [
+    {
+      "regime": "Low",
+      "horizon": 1,
+      "standard_crps_by_seed": [
+        0.0027166648180116,
+        0.0027052158172077,
+        0.0026981256189612,
+        0.0027043818849877,
+        0.0027003905259108
+      ],
+      "va_diff_crps_by_seed": [
+        0.0026931245574501,
+        0.0027035403226727,
+        0.0027007991550866,
+        0.0026914116994897,
+        0.0027006946203821
+      ],
+      "delta_by_seed_va_minus_standard": [
+        -2.3540260561500173e-05,
+        -1.6754945349997837e-06,
+        2.6735361254000625e-06,
+        -1.2970185497999942e-05,
+        3.0409447129972275e-07
+      ],
+      "paired_t_pvalue": 0.22575751263219757,
+      "wilcoxon_pvalue": 0.4375,
+      "wilcoxon_method": "exact",
+      "cohens_dz": -0.6398258991261068,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "Low",
+      "horizon": 6,
+      "standard_crps_by_seed": [
+        0.0028435024825566,
+        0.0029062149736619,
+        0.0028419507423915,
+        0.0028503768901097,
+        0.0028585288165626
+      ],
+      "va_diff_crps_by_seed": [
+        0.0028374562046561,
+        0.0028567977577543,
+        0.0028405504334759,
+        0.0028641382252845,
+        0.002877307669296
+      ],
+      "delta_by_seed_va_minus_standard": [
+        -6.046277900499924e-06,
+        -4.941721590759991e-05,
+        -1.400308915600057e-06,
+        1.3761335174799962e-05,
+        1.877885273340006e-05
+      ],
+      "paired_t_pvalue": 0.7070863656328122,
+      "wilcoxon_pvalue": 1.0,
+      "wilcoxon_method": "exact",
+      "cohens_dz": -0.1805383613806387,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "Low",
+      "horizon": 24,
+      "standard_crps_by_seed": [
+        0.0030384593143714,
+        0.0030567465526632,
+        0.0030453986078572,
+        0.0030543126536827,
+        0.0030513487657161
+      ],
+      "va_diff_crps_by_seed": [
+        0.0030319229335098,
+        0.0031384205448036,
+        0.00303265160348,
+        0.0030553825427705,
+        0.0030385667749248
+      ],
+      "delta_by_seed_va_minus_standard": [
+        -6.536380861599765e-06,
+        8.16739921404002e-05,
+        -1.274700437720001e-05,
+        1.0698890878001535e-06,
+        -1.2781990791300036e-05
+      ],
+      "paired_t_pvalue": 0.6046883388417693,
+      "wilcoxon_pvalue": 0.8125,
+      "wilcoxon_method": "exact",
+      "cohens_dz": 0.2509207197462643,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "Medium",
+      "horizon": 1,
+      "standard_crps_by_seed": [
+        0.0038352516020302,
+        0.003840465126649,
+        0.0038248208125763,
+        0.0038320368019144,
+        0.0038225172367439
+      ],
+      "va_diff_crps_by_seed": [
+        0.0038288684112565,
+        0.0038291127768343,
+        0.0038297168901019,
+        0.0038361447172665,
+        0.0038261504699914
+      ],
+      "delta_by_seed_va_minus_standard": [
+        -6.383190773700219e-06,
+        -1.135234981469984e-05,
+        4.896077525599982e-06,
+        4.107915352100262e-06,
+        3.6332332474997217e-06
+      ],
+      "paired_t_pvalue": 0.7730901885708893,
+      "wilcoxon_pvalue": 0.8125,
+      "wilcoxon_method": "exact",
+      "cohens_dz": -0.1379721290464329,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "Medium",
+      "horizon": 6,
+      "standard_crps_by_seed": [
+        0.0038833513328351,
+        0.0038965145379966,
+        0.0038747230719729,
+        0.0038873321263869,
+        0.0038894358116012
+      ],
+      "va_diff_crps_by_seed": [
+        0.0038838429877696,
+        0.00387558192586,
+        0.0038707330085555,
+        0.0038934703836067,
+        0.0038966698042083
+      ],
+      "delta_by_seed_va_minus_standard": [
+        4.916549344998952e-07,
+        -2.093261213660007e-05,
+        -3.99006341739996e-06,
+        6.1382572197998635e-06,
+        7.233992607099966e-06
+      ],
+      "paired_t_pvalue": 0.6867999352701071,
+      "wilcoxon_pvalue": 1.0,
+      "wilcoxon_method": "exact",
+      "cohens_dz": -0.1940049112584573,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "Medium",
+      "horizon": 24,
+      "standard_crps_by_seed": [
+        0.0038962814011945,
+        0.0038917281483014,
+        0.0039029759665534,
+        0.0039058045145887,
+        0.0039037035002859
+      ],
+      "va_diff_crps_by_seed": [
+        0.0038965917177293,
+        0.0039334887295724,
+        0.0039055720963838,
+        0.0039124264468303,
+        0.0039132291369159
+      ],
+      "delta_by_seed_va_minus_standard": [
+        3.103165348000009e-07,
+        4.176058127099971e-05,
+        2.5961298304000117e-06,
+        6.621932241600379e-06,
+        9.525636630000264e-06
+      ],
+      "paired_t_pvalue": 0.1833282558382062,
+      "wilcoxon_pvalue": 0.0625,
+      "wilcoxon_method": "exact",
+      "cohens_dz": 0.7186787766751892,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "High",
+      "horizon": 1,
+      "standard_crps_by_seed": [
+        0.0053307202366789,
+        0.0053802013487502,
+        0.0053461021558328,
+        0.0053362828972567,
+        0.0053531021476907
+      ],
+      "va_diff_crps_by_seed": [
+        0.0053412715915113,
+        0.0053529405119997,
+        0.005355846045112,
+        0.0053511560825956,
+        0.0053624134939031
+      ],
+      "delta_by_seed_va_minus_standard": [
+        1.055135483239971e-05,
+        -2.7260836750499923e-05,
+        9.743889279200182e-06,
+        1.4873185338899926e-05,
+        9.311346212399589e-06
+      ],
+      "paired_t_pvalue": 0.6793696758008076,
+      "wilcoxon_pvalue": 0.625,
+      "wilcoxon_method": "exact",
+      "cohens_dz": 0.19898957844491075,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "High",
+      "horizon": 6,
+      "standard_crps_by_seed": [
+        0.0050374843508955,
+        0.005039645832302,
+        0.0050184941746318,
+        0.0050351501600191,
+        0.0050276307896534
+      ],
+      "va_diff_crps_by_seed": [
+        0.0050502105114065,
+        0.0050358599543176,
+        0.0050276761735103,
+        0.0050402879154239,
+        0.0050319934250081
+      ],
+      "delta_by_seed_va_minus_standard": [
+        1.2726160510999687e-05,
+        -3.785877984399666e-06,
+        9.181998878499478e-06,
+        5.137755404800021e-06,
+        4.362635354700217e-06
+      ],
+      "paired_t_pvalue": 0.11682972435951951,
+      "wilcoxon_pvalue": 0.125,
+      "wilcoxon_method": "exact",
+      "cohens_dz": 0.8920295479819972,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    },
+    {
+      "regime": "High",
+      "horizon": 24,
+      "standard_crps_by_seed": [
+        0.004647053713767,
+        0.004626947857211,
+        0.0046124226701255,
+        0.0046149972236126,
+        0.0046163803803797
+      ],
+      "va_diff_crps_by_seed": [
+        0.0046557182538946,
+        0.0046566498486921,
+        0.0046393994878988,
+        0.0046493719769919,
+        0.0046417110455819
+      ],
+      "delta_by_seed_va_minus_standard": [
+        8.664540127600005e-06,
+        2.970199148109951e-05,
+        2.6976817773300202e-05,
+        3.437475337930013e-05,
+        2.5330665202200238e-05
+      ],
+      "paired_t_pvalue": 0.004589885110489853,
+      "wilcoxon_pvalue": 0.0625,
+      "wilcoxon_method": "exact",
+      "cohens_dz": 2.5630524804446413,
+      "n_seeds": 5,
+      "statistical_power_note": "n=5 paired seeds; p-values are exploratory and not sufficient alone for a significance claim"
+    }
+  ],
+  "interpretation_policy": "n=5 has low statistical power; exact p-values are reported but no significance claim is made from them alone",
+  "pre_correction_outputs_used": false,
+  "rv_168h_used": false,
+  "deterministic": true,
+  "output_row_counts": {
+    "overall": 15,
+    "regime": 45
+  }
+}

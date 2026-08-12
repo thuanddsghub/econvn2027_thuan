@@ -1,0 +1,288 @@
+{
+  "task": "20",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Task 17 SHA-256 hashes",
+      "status": "PASS",
+      "details": {
+        "dataset": {
+          "path": "data/processed/eth_usd_hourly_features.parquet",
+          "expected": "7840da440ae9c97fe3c3947ec490877cff87ce1cdd184cd9d412752558e714d1",
+          "actual": "7840da440ae9c97fe3c3947ec490877cff87ce1cdd184cd9d412752558e714d1",
+          "match": true
+        },
+        "task06_sample_index": {
+          "path": "data/processed/task06_sample_index.parquet",
+          "expected": "2a8c1fed442fc684593d4c93edb3fd997b2a0fdb38015752018ddc7c32c7170d",
+          "actual": "2a8c1fed442fc684593d4c93edb3fd997b2a0fdb38015752018ddc7c32c7170d",
+          "match": true
+        },
+        "input_scaler": {
+          "path": "data/metadata/task07a_scaler.json",
+          "expected": "774f9fa153121b30cc9db7f78be7296be959e377e8be7221bb50f92d2e724502",
+          "actual": "774f9fa153121b30cc9db7f78be7296be959e377e8be7221bb50f92d2e724502",
+          "match": true
+        },
+        "target_scaler": {
+          "path": "outputs/final/target_scaler.json",
+          "expected": "75fab1a43af03ea1474ac972e56c5f0d2bbbc52f8d0ee714acdda1d886bf2c74",
+          "actual": "75fab1a43af03ea1474ac972e56c5f0d2bbbc52f8d0ee714acdda1d886bf2c74",
+          "match": true
+        },
+        "final_config": {
+          "path": "outputs/final/final_config.json",
+          "expected": "901edddfa6457663fed1b882751f14bcc870fb6cec5aad530acfda5762cc7bce",
+          "actual": "901edddfa6457663fed1b882751f14bcc870fb6cec5aad530acfda5762cc7bce",
+          "match": true
+        },
+        "task16_metrics_source": {
+          "path": "outputs/metrics/task16_multiseed_metrics.csv",
+          "expected": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f",
+          "actual": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f",
+          "match": true
+        },
+        "task16_regime_metrics_source": {
+          "path": "outputs/metrics/task16_regime_metrics.csv",
+          "expected": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979",
+          "actual": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979",
+          "match": true
+        }
+      }
+    },
+    {
+      "name": "Task 06 sample counts",
+      "status": "PASS",
+      "details": {
+        "train/horizon_1": 58125,
+        "train/horizon_6": 58045,
+        "train/horizon_24": 57757,
+        "validation/horizon_1": 8784,
+        "validation/horizon_6": 8779,
+        "validation/horizon_24": 8761,
+        "test/horizon_1": 13695,
+        "test/horizon_6": 13680,
+        "test/horizon_24": 13626
+      }
+    },
+    {
+      "name": "Final metric dimensions",
+      "status": "PASS",
+      "details": {
+        "overall": 30,
+        "regime": 90
+      }
+    },
+    {
+      "name": "Input scaler fit on train only",
+      "status": "PASS",
+      "details": {
+        "log_return": 61299,
+        "log_volume": 61316,
+        "high_low_range": 61316,
+        "rv_24h": 60908
+      }
+    },
+    {
+      "name": "Target scaler fit on train only",
+      "status": "PASS",
+      "details": {
+        "mean": 9.035341009859136e-05,
+        "std": 0.010806338977574673
+      }
+    },
+    {
+      "name": "Corrected DDPM posterior variance",
+      "status": "PASS",
+      "details": true
+    },
+    {
+      "name": "rv_24h only primary volatility feature",
+      "status": "PASS",
+      "details": [
+        "log_return",
+        "log_volume",
+        "high_low_range",
+        "rv_24h"
+      ]
+    },
+    {
+      "name": "Frozen q33/q67 thresholds",
+      "status": "PASS",
+      "details": {
+        "q33": 0.027575830399575955,
+        "q67": 0.04549905819580233
+      }
+    },
+    {
+      "name": "Paper tables use frozen metric source hashes",
+      "status": "PASS",
+      "details": true
+    },
+    {
+      "name": "Paper table dimensions",
+      "status": "PASS",
+      "details": {
+        "table1": [
+          6,
+          7
+        ],
+        "table2": [
+          9,
+          4
+        ],
+        "table3": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "name": "Paper figures exist and are non-empty",
+      "status": "PASS",
+      "details": [
+        "outputs/final/paper/figures/figure1_calibration.pdf",
+        "outputs/final/paper/figures/figure1_calibration.png",
+        "outputs/final/paper/figures/figure2_regime_crps.pdf",
+        "outputs/final/paper/figures/figure2_regime_crps.png",
+        "outputs/final/paper/figures/figure3_paired_crps.pdf",
+        "outputs/final/paper/figures/figure3_paired_crps.png"
+      ]
+    },
+    {
+      "name": "No pre-correction outputs in final paper artifacts",
+      "status": "PASS",
+      "details": [
+        "outputs/metrics/task09",
+        "outputs/metrics/task10",
+        "task09_",
+        "task10_"
+      ]
+    },
+    {
+      "name": "Identical datasets/splits/seeds/training/sampling/evaluation protocol",
+      "status": "PASS",
+      "details": {
+        "seeds": [
+          42,
+          123,
+          2024,
+          3407,
+          7777
+        ],
+        "batch_size": 512,
+        "learning_rate": 0.001,
+        "weight_decay": 1e-05,
+        "max_epochs": 10,
+        "selection": "validation_only",
+        "sample_count": 100
+      }
+    },
+    {
+      "name": "Statistical tests use seed as paired unit",
+      "status": "PASS",
+      "details": "seed; forecast timestamps are not treated as independent observations"
+    },
+    {
+      "name": "No test-set hyperparameter tuning",
+      "status": "PASS",
+      "details": true
+    },
+    {
+      "name": "Manuscript-safe conclusion checks",
+      "status": "PASS",
+      "details": {
+        "no_robust_va_diff_crps_advantage": true,
+        "small_h1_h6_improvements": true,
+        "h24_overall_disadvantage": true,
+        "no_consistent_high_volatility_advantage": true,
+        "calibration_summary": [
+          {
+            "model": "standard_diffusion",
+            "horizon": 1,
+            "picp": 0.8560642570281125
+          },
+          {
+            "model": "standard_diffusion",
+            "horizon": 6,
+            "picp": 0.8606578947368421
+          },
+          {
+            "model": "standard_diffusion",
+            "horizon": 24,
+            "picp": 0.8869660942316161
+          },
+          {
+            "model": "va_diff",
+            "horizon": 1,
+            "picp": 0.8588097845929171
+          },
+          {
+            "model": "va_diff",
+            "horizon": 6,
+            "picp": 0.8621637426900586
+          },
+          {
+            "model": "va_diff",
+            "horizon": 24,
+            "picp": 0.8842360193747248
+          }
+        ],
+        "calibration_caveat": "The final frozen figures contain the 90% calibration level only; no broader calibration claim is made."
+      }
+    }
+  ],
+  "inconsistencies_found": [],
+  "conclusions": {
+    "no_robust_va_diff_crps_advantage": true,
+    "small_h1_h6_improvements": true,
+    "h24_overall_disadvantage": true,
+    "no_consistent_high_volatility_advantage": true,
+    "calibration_summary": [
+      {
+        "model": "standard_diffusion",
+        "horizon": 1,
+        "picp": 0.8560642570281125
+      },
+      {
+        "model": "standard_diffusion",
+        "horizon": 6,
+        "picp": 0.8606578947368421
+      },
+      {
+        "model": "standard_diffusion",
+        "horizon": 24,
+        "picp": 0.8869660942316161
+      },
+      {
+        "model": "va_diff",
+        "horizon": 1,
+        "picp": 0.8588097845929171
+      },
+      {
+        "model": "va_diff",
+        "horizon": 6,
+        "picp": 0.8621637426900586
+      },
+      {
+        "model": "va_diff",
+        "horizon": 24,
+        "picp": 0.8842360193747248
+      }
+    ],
+    "calibration_caveat": "The final frozen figures contain the 90% calibration level only; no broader calibration claim is made."
+  },
+  "dataset": {
+    "source": "data/processed/eth_usd_hourly_features.parquet",
+    "date_start_utc": "2017-01-01 00:00:00+00:00",
+    "date_end_utc": "2026-08-11 00:00:00+00:00",
+    "missing_hourly_candles": 38,
+    "contiguous_gap_groups": 18,
+    "gap_policy": "returns invalidated after gaps; no filling across gaps"
+  },
+  "provenance": {
+    "final_manifest_sha256": "6d08c20fedf0053e13e46da20ce309175167c16cc93ae19ed3b7097253e0ecc1",
+    "final_metric_sha256": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f",
+    "final_regime_metric_sha256": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979"
+  }
+}

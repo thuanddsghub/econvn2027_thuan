@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "source_sha256": {
+    "outputs/final/final_metrics.csv": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f",
+    "outputs/final/final_regime_metrics.csv": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979",
+    "outputs/final/statistical_summary.csv": "ac52f2218a5ba4d98363e75c2e3756be50ecf82ca20dd28f39fe7d4f5f77dbff",
+    "outputs/final/statistical_regime_summary.csv": "c9b06f0d3ad6c8ce526d56683d595a88aa83bad1e294a85b5a698efe34f9fc2d",
+    "outputs/final/statistical_report.json": "9942cfcc506be50d305e6cc872fa9a8d4bbbe9a99db73557228d80edfca28e63",
+    "outputs/final/final_manifest.json": "6d08c20fedf0053e13e46da20ce309175167c16cc93ae19ed3b7097253e0ecc1"
+  },
+  "pre_correction_outputs_used": false,
+  "metric_recomputation_from_samples": false,
+  "deterministic": true,
+  "table_dimensions": {
+    "table1": [
+      6,
+      7
+    ],
+    "table2": [
+      9,
+      4
+    ],
+    "table3": [
+      3,
+      7
+    ]
+  },
+  "figure_data_source": "frozen Task 17/18 aggregates only",
+  "calibration_levels_available": [
+    0.9
+  ]
+}

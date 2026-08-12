@@ -11,3 +11,9 @@ outputs/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !outputs/.gitkeep
+!outputs/final/
+!outputs/final/**
+!outputs/metrics/
+outputs/metrics/*
+!outputs/metrics/task16_multiseed_metrics.csv
+!outputs/metrics/task16_regime_metrics.csv
