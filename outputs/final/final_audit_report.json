@@ -66,6 +66,19 @@
       }
     },
     {
+      "name": "Task 06 timestamps and split boundaries",
+      "status": "PASS",
+      "details": {
+        "temporal_structure": true,
+        "boundaries": {
+          "train": true,
+          "validation": true,
+          "test": true
+        },
+        "ordered_unique": true
+      }
+    },
+    {
       "name": "Final metric dimensions",
       "status": "PASS",
       "details": {
@@ -77,10 +90,62 @@
       "name": "Input scaler fit on train only",
       "status": "PASS",
       "details": {
-        "log_return": 61299,
-        "log_volume": 61316,
-        "high_low_range": 61316,
-        "rv_24h": 60908
+        "log_return": {
+          "expected": {
+            "n": 61299,
+            "mean": 9.035341009859136e-05,
+            "variance": 0.00011677505705963401,
+            "scale": 0.010806250832718719
+          },
+          "actual": {
+            "n": 61299,
+            "mean": 9.035341009859136e-05,
+            "variance": 0.00011677505705963401,
+            "scale": 0.010806250832718719
+          }
+        },
+        "log_volume": {
+          "expected": {
+            "n": 61316,
+            "mean": 8.487607310942327,
+            "variance": 0.9770812257144954,
+            "scale": 0.9884741907174387
+          },
+          "actual": {
+            "n": 61316,
+            "mean": 8.487607310942327,
+            "variance": 0.9770812257144954,
+            "scale": 0.9884741907174387
+          }
+        },
+        "high_low_range": {
+          "expected": {
+            "n": 61316,
+            "mean": 0.013331239619778548,
+            "variance": 0.000203512686652687,
+            "scale": 0.0142657872777035
+          },
+          "actual": {
+            "n": 61316,
+            "mean": 0.013331239619778548,
+            "variance": 0.000203512686652687,
+            "scale": 0.0142657872777035
+          }
+        },
+        "rv_24h": {
+          "expected": {
+            "n": 60908,
+            "mean": 0.04289419265918153,
+            "variance": 0.0009549982197613104,
+            "scale": 0.03090304547712588
+          },
+          "actual": {
+            "n": 60908,
+            "mean": 0.04289419265918153,
+            "variance": 0.0009549982197613104,
+            "scale": 0.03090304547712588
+          }
+        }
       }
     },
     {
@@ -115,26 +180,42 @@
       }
     },
     {
-      "name": "Paper tables use frozen metric source hashes",
-      "status": "PASS",
-      "details": true
-    },
-    {
-      "name": "Paper table dimensions",
+      "name": "Paper tables and figures use frozen source hashes",
       "status": "PASS",
       "details": {
-        "table1": [
-          6,
-          7
-        ],
-        "table2": [
-          9,
-          4
-        ],
-        "table3": [
-          3,
-          7
-        ]
+        "outputs/final/final_metrics.csv": {
+          "expected": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f",
+          "actual": "693eb2e3fc5c4cd1046f0edd117589299f0dec982790d2fd1cf9cd690e15e01f"
+        },
+        "outputs/final/final_regime_metrics.csv": {
+          "expected": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979",
+          "actual": "9c7d9781426a6ece372a5da70880410d7b4751f112ca0d406d9bf09e05d2e979"
+        },
+        "outputs/final/statistical_summary.csv": {
+          "expected": "ac52f2218a5ba4d98363e75c2e3756be50ecf82ca20dd28f39fe7d4f5f77dbff",
+          "actual": "ac52f2218a5ba4d98363e75c2e3756be50ecf82ca20dd28f39fe7d4f5f77dbff"
+        },
+        "outputs/final/statistical_regime_summary.csv": {
+          "expected": "c9b06f0d3ad6c8ce526d56683d595a88aa83bad1e294a85b5a698efe34f9fc2d",
+          "actual": "c9b06f0d3ad6c8ce526d56683d595a88aa83bad1e294a85b5a698efe34f9fc2d"
+        },
+        "outputs/final/statistical_report.json": {
+          "expected": "9942cfcc506be50d305e6cc872fa9a8d4bbbe9a99db73557228d80edfca28e63",
+          "actual": "9942cfcc506be50d305e6cc872fa9a8d4bbbe9a99db73557228d80edfca28e63"
+        },
+        "outputs/final/final_manifest.json": {
+          "expected": "6d08c20fedf0053e13e46da20ce309175167c16cc93ae19ed3b7097253e0ecc1",
+          "actual": "6d08c20fedf0053e13e46da20ce309175167c16cc93ae19ed3b7097253e0ecc1"
+        }
+      }
+    },
+    {
+      "name": "Paper tables exactly reproduce frozen metrics",
+      "status": "PASS",
+      "details": {
+        "table1": true,
+        "table2": true,
+        "table3": true
       }
     },
     {

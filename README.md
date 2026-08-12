@@ -27,11 +27,14 @@ used by the manuscript pipeline.
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -e '.[dev]'
+make setup
 make paper-audit
 pytest -q
 ruff check .
 ```
+
+`make setup` installs the exact Python dependencies recorded in
+`requirements-lock.txt`; the frozen reference environment is Python 3.14.4.
 
 The audit does not retrain models or regenerate tables and figures. It verifies the
 frozen hashes, sample counts, scaling policy, regime thresholds, paper artifacts,
