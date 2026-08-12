@@ -1,3 +1,4 @@
+# Frozen configuration contract for the manuscript experiment.
 seed: 42
 
 data:
@@ -5,115 +6,75 @@ data:
   frequency: 1h
   context_length: 168
   horizons: [1, 6, 24]
-  # Primary volatility feature for all main-manuscript experiments.
+  features: [log_return, log_volume, high_low_range, rv_24h]
   primary_volatility_feature: rv_24h
-  # Keep the default window explicit; rv_168h is diagnostic only.
   volatility_window: 24
-  diagnostic_volatility_features: [rv_168h]
   regime_threshold_feature: rv_24h
   regime_threshold_fit: train_only
-  train_end: "2023-12-31"
-  val_end: "2024-12-31"
+  diagnostic_volatility_features: [rv_168h]
+  train_end: "2023-12-31T23:00:00Z"
+  validation_end: "2024-12-31T23:00:00Z"
+
+scaling:
+  input_scaler: train_only_standard_zscore
+  target_parameterization: train_standardized_log_return
+  target_scaler_fit: train_log_return_only
+  targets_saved_in: original_log_return_units
+
+diffusion:
+  context_encoder: GRU
+  context_hidden_size: 32
+  context_layers: 1
+  diffusion_steps: 100
+  beta_schedule: linear
+  beta_start: 0.0001
+  beta_end: 0.02
+  reverse_variance: ddpm_posterior_variance
+  t0_noise: false
 
 model:
-  name: va_diff
-  hidden_dim: 128
-  diffusion_steps: 100
-  beta_start: 0.0001
-  beta_end: 0.02
-  volatility_conditioning: true
-  # The default VA-Diff conditioning input is rv_24h, never rv_168h.
   volatility_conditioning_feature: rv_24h
+  volatility_conditioning: true
 
 training:
-  batch_size: 128
-  epochs: 50
-  lr: 0.0003
-  weight_decay: 0.0001
-  # Forecast targets remain in original log-return scale; feature scaling is input-only.
-  targets_scaled: false
-
-task08a:
-  seed: 42
-  model: lstm
-  hidden_size: 16
-  num_layers: 1
-  batch_size: 1024
-  epochs: 4
-  patience: 2
-  learning_rate: 0.001
-  weight_decay: 0.00001
-  target_scale: original_log_return
-  selection: validation_only
-
-task08b:
-  seed: 42
-  model: transformer_encoder
-  d_model: 32
-  nhead: 4
-  num_layers: 2
-  feedforward_dim: 64
-  dropout: 0.1
-  front_end: learnable_conv1d
-  front_end_kernel_size: 8
-  front_end_stride: 8
-  front_end_padding: 4
-  uses_all_context_observations: true
-  batch_size: 1024
-  learning_rate: 0.001
-  weight_decay: 0.00001
-  max_epochs: 4
-  target_scale: original_log_return
-  selection: validation_only
-
-task09:
-  seed: 42
-  model: standard_conditional_diffusion
-  context_encoder: gru
-  context_hidden_size: 32
-  context_layers: 1
-  diffusion_steps: 100
-  beta_schedule: linear
-  beta_start: 0.0001
-  beta_end: 0.02
+  seeds: [42, 123, 2024, 3407, 7777]
   batch_size: 512
   learning_rate: 0.001
   weight_decay: 0.00001
   max_epochs: 10
-  final_sample_count: 2
-  targets_scaled: false
-  explicit_volatility_conditioning: false
   selection: validation_only
+  sample_count: 100
+  test_tuning: false
+  targets_scaled: false  # feature scaler never transforms saved/evaluated targets
 
-task10:
-  seed: 42
-  model: volatility_aware_diffusion
-  use_volatility_conditioning: true
-  volatility_feature: rv_24h
-  context_encoder: gru
-  context_hidden_size: 32
-  context_layers: 1
-  diffusion_steps: 100
-  beta_schedule: linear
-  beta_start: 0.0001
-  beta_end: 0.02
-  batch_size: 512
-  learning_rate: 0.001
-  weight_decay: 0.00001
-  max_epochs: 10
-  final_sample_count: 100
-  targets_scaled: false
-  selection: validation_only
+models:
+  standard_diffusion:
+    volatility_conditioning: false
+  va_diff:
+    volatility_conditioning: true
+    volatility_feature: rv_24h
+    volatility_source: forecast_origin_only
 
-sampling:
-  n_samples: 500
+regimes:
+  feature: rv_24h
+  thresholds: train_only_q33_q67
+  definitions:
+    low: rv_24h < q33
+    medium: q33 <= rv_24h < q67
+    high: rv_24h >= q67
+
+evaluation:
+  primary_metric: CRPS
+  secondary_metrics: [MAE, RMSE, PICP90, interval_width]
+  paired_unit: seed
 
 experiment:
-  primary_metric: crps
-  regimes: [low, medium, high]
   primary_volatility_feature: rv_24h
-  # False is mandatory for the main/default experiment. Set true only for
-  # explicitly labeled post-main sensitivity/diagnostic analyses.
   volatility_sensitivity_mode: false
   diagnostic_volatility_features: [rv_168h]
-  diagnostic_feature_policy: "rv_168h may be used only for descriptive diagnostics, post-main sensitivity/robustness checks, or supplementary figures/tables; never for primary conditioning, regime thresholds, headline tables, model selection, or tuning."
+
+policy:
+  rv_168h_primary_use: false
+  no_random_split: true
+  no_future_leakage: true
+  no_additional_model_training: true

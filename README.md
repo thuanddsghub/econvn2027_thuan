@@ -1,41 +1,44 @@
-# VA-Diff ETH
+# Volatility-Aware Diffusion Models for Cryptocurrency Return Forecasting
 
-Reproducible research code for **Volatility-Aware Diffusion Models for Cryptocurrency Return Forecasting** using ETH/USD hourly returns.
+This repository is frozen for the manuscript experiment. No additional model
+training, hyperparameter tuning, recalibration, or sensitivity analysis is part of
+the active workflow.
 
-## Research question
-Does explicit realized-volatility conditioning improve probabilistic diffusion forecasting, especially in high-volatility regimes?
+## Manuscript scope
 
-## Setup
+The final comparison is Standard Diffusion versus VA-Diff for hourly ETH/USD return
+forecasting at H=1, 6, and 24. The authoritative manuscript artifacts are under
+`outputs/final/` and are audited by Task 20.
+
+- 168-hour chronological context
+- train/validation/test chronological splits
+- train-only input scaling and train-only target standardization
+- corrected DDPM posterior variance
+- 100 trajectories per forecast
+- five paired seeds: 42, 123, 2024, 3407, 7777
+- primary metric: CRPS; secondary metrics: MAE, RMSE, PICP90, interval width
+- frozen train-only `rv_24h` regimes
+
+`rv_168h` is retained only as a diagnostic field in the feature dataset and is not
+used by the manuscript pipeline.
+
+## Reproduce the audit
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -e '.[dev]'
-python scripts/smoke_test.py
+make paper-audit
 pytest -q
+ruff check .
 ```
 
-## Experiment contract
-- Data: ETH/USD hourly OHLCV
-- Context: 168 hours
-- Horizons: 1, 6, 24 hours
-- Volatility: 24-hour realized volatility
-- Main comparison: Diffusion vs VA-Diff
-- Primary metric: CRPS
-- Regimes: low / medium / high volatility
+The audit does not retrain models or regenerate tables and figures. It verifies the
+frozen hashes, sample counts, scaling policy, regime thresholds, paper artifacts,
+paired statistics, and manuscript-safe conclusions.
 
-## Volatility feature policy
+## Manuscript draft
 
-`rv_24h` is the only primary volatility feature for main-manuscript experiments. It is
-the default model-conditioning feature and the feature from which regime thresholds
-are fit using training data only.
-
-`rv_168h` remains available in the feature dataset as a diagnostic/sensitivity feature
-only. It must not be used for primary model conditioning, main regime definitions,
-train/validation/test regime thresholds, headline result tables, model selection, or
-hyperparameter tuning. It may be used after the main experiment for descriptive
-diagnostics, robustness checks, or optional supplementary figures/tables.
-
-The feature-selection guard rejects `rv_168h` in the main/default mode. A caller must
-explicitly enable `sensitivity_mode` for a diagnostic or sensitivity analysis.
-
-See `AGENTS.md` for Codex instructions and `configs/base.yaml` for defaults.
+The manuscript structure and current evidence are in
+[`manuscript/manuscript.md`](manuscript/manuscript.md). Tables and figures are in
+[`outputs/final/paper/`](outputs/final/paper/).
