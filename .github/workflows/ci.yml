@@ -11,3 +11,6 @@ jobs:
       - run: python -m pip install -e '.[dev]'
       - run: ruff check .
       - run: pytest -q
+      - run: make paper-audit
+      - name: Verify frozen audit outputs are reproducible
+        run: git diff --exit-code -- outputs/final/FINAL_EXPERIMENT_REPORT.md outputs/final/final_audit_report.json
