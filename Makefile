@@ -6,7 +6,7 @@ test:
 	pytest -q
 
 lint:
-	ruff check src tests scripts
+	ruff check .
 
 paper-audit:
 	python scripts/audit_task20_final_experiment.py
